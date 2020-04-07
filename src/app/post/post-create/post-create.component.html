@@ -1,0 +1,38 @@
+<div class="container">
+    <h1>Create</h1>
+    <form #CreateModel="ngForm" (ngSubmit)="createPost()">
+      <div class="form-group">
+        <label for="username">Name</label>
+        <input type="text" class="form-control" id="username" 
+        required
+        name="username"
+      [(ngModel)]="model.hotelname"
+      #username="ngModel">
+      <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+        Username is required.
+      </div>
+      </div>
+      <div class="form-group">
+        <label for="url">image</label>
+        <input type="text" class="form-control" id="url" 
+        required
+        name="url"
+      [(ngModel)]="model.url"
+      #url="ngModel">
+      
+      </div>
+      <div class="form-group">
+        <label for="hotelprice">Price</label>
+        <input type="text" class="form-control" id="hotelprice" 
+        required
+        name="hotelprice"
+      [(ngModel)]="model.hotelprice"
+      #password="ngModel">
+      <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+        Password is required.
+      </div>
+      </div>
+      <button type="submit" class="btn btn-success">create</button>
+    </form>
+    
+  </div>
