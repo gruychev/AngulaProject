@@ -51,7 +51,7 @@ export class PostListComponent implements OnInit {
           this.toastr.success('Create in successfully', 'Success!');
       
         })
-    
+           
   
 
    console.log(event)
