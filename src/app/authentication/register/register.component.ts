@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
 
   register(){
     delete this.model['confirmPassword'];
