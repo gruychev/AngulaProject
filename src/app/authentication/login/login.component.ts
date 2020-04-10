@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { LoginModel } from '../models/login.model';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   model: LoginModel;
   loginFailed: boolean;
   errMessage: string;
-
+  
+ 
   constructor(
     private authService: AuthService,
      private router: Router,
@@ -24,8 +26,9 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authService.login(this.model)
+    
       .subscribe(data => {
-        this.successfulLogin(data);
+        this.successfulLogin(data);       
         this.toastr.success('Logged in successfully', 'Success!');
         
       },

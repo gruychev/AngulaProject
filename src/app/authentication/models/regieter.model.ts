@@ -5,7 +5,6 @@ export class RegisterModel {
         public confirmPassword:string,
         public firstName: string,
         public lastName: string,
-        public email: string,
-        public age?: number
+        public email: string,    
     ) { }
 }

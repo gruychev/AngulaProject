@@ -1,6 +1,9 @@
 <div class="container">
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-5">
     <h1>Login Form</h1>
-    <form #loginFor="ngForm" (ngSubmit)="login()">
+    <form #loginForm="ngForm" (ngSubmit)="login()">
       <div class="form-group">
         <label for="username">Username</label>
         <input type="text" class="form-control" id="username" 
@@ -28,5 +31,8 @@
     <div *ngIf="loginFailed" class="alert alert-danger">
         {{errMessage}}
       </div>
+    </div>
+    <div class="col-lg-5"></div>
+  </div>
   </div>
   

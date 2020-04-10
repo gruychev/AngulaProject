@@ -1,6 +1,9 @@
 <div class="container">
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-5">
     <h1>Registration Form</h1>
-    <form #registrationForm="ngForm" (ngSubmit)="register()">
+    <form #registrationForm="ngForm" (ngSubmit)="register()" >
       <div class="form-group">
         <label for="username">Username</label>
         <input type="text" class="form-control" id="username" 
@@ -78,13 +81,7 @@
           Invalid email.
         </div>
       </div>
-      <div class="form-group">
-        <label for="age">Age</label>
-        <input type="number" class="form-control" id="age"
-        name="age"
-        [(ngModel)]="model.age"
-        #age="ngModel">
-      </div>
+      
   
       <button type="submit" class="btn btn-success" >Register</button>
     </form>
@@ -92,4 +89,7 @@
     <div *ngIf="registerFailed" class="alert alert-danger">
         {{errMessage}}
       </div>
+       </div>
+      <div class="col-lg-5"></div>
+    </div>
   </div>

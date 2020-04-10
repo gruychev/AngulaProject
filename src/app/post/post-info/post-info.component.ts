@@ -25,8 +25,7 @@ export class PostInfoComponent implements OnInit {
   ngOnInit() {
   }
 
-  clickButton(){
-    //console.log('button with id - ' + this.post.hotelname)
+  clickButton(){    
     this.clickButtonEmiter.emit(this.post)
     
 

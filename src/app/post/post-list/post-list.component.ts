@@ -20,7 +20,6 @@ export class PostListComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router
   ) { }
-
   
 
   ngOnInit(): void {
@@ -40,23 +39,16 @@ export class PostListComponent implements OnInit {
     })
   }
 
-  fromChild(event){
-
-    
+  fromChild(event){    
       const body = event;
-      body['author'] = localStorage.getItem('username');
-  
+      body['author'] = localStorage.getItem('username');  
       this.postService.createReservation(body)
         .subscribe(() => {
           this.toastr.success('Create in successfully', 'Success!');
       
-        })
-           
+        })   
   
-
-   console.log(event)
-    this.message=event;
-
+      this.message=event;
   }
 
 
