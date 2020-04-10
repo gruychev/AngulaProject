@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
       .subscribe(data => {
         this.successfulLogin(data);       
         this.toastr.success('Logged in successfully', 'Success!');
+        this.router.navigate(['/list']);
         
       },
         err => {
@@ -38,12 +39,15 @@ export class LoginComponent implements OnInit {
         })
   }
 
-  successfulLogin(data) {
-    this.authService.authtoken = data['_kmd']['authtoken'];
+ successfulLogin(data) {
+   this.authService.authtoken = data['_kmd']['authtoken'];
     localStorage.setItem('authtoken', data['_kmd']['authtoken']);
-    localStorage.setItem('username', data['username']);
-    this.router.navigate(['/list']);
+   localStorage.setItem('username', data['username']);
+  
   }
+
+
+ 
 
   ngOnInit() {
   }

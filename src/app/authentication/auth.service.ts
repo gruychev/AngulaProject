@@ -13,46 +13,41 @@ const logoutUrl = `https://baas.kinvey.com/user/${appKey}/_logout`;
 
 @Injectable()
 export class AuthService {
+    isAuthenticated() {
+        throw new Error("Method not implemented.");
+    }
     private currentAuthtoken: string;
 
-    private createAuthHeaders(type: string) {
-        if (type === 'Basic') {
-            return new HttpHeaders({
-                'Authorization': `Basic ${btoa(`${appKey}:${appSecret}`)}`,
-                'Content-Type': 'application/json'
-            });
-        } else {
-            return new HttpHeaders({
-                'Authorization': `Kinvey ${localStorage.getItem('authtoken')}`,
-                'Content-Type': 'application/json'
-            });
-        }
-    }
+ //   private createAuthHeaders(type: string) {
+  //      if (type === 'Basic') {
+  //          return new HttpHeaders({
+   //             'Authorization': `Basic ${btoa(`${appKey}:${appSecret}`)}`,
+   //             'Content-Type': 'application/json'
+   //         });
+   //     } else {
+   //         return new HttpHeaders({
+    //            'Authorization': `Kinvey ${localStorage.getItem('authtoken')}`,
+  //              'Content-Type': 'application/json'
+    //        });
+   //     }
+  ///  }
 
     register(model: RegisterModel) {
         return this.http.post(
             registerUrl,
-            JSON.stringify(model),
-            {
-                headers: this.createAuthHeaders('Basic')
-            });
+            JSON.stringify(model));
     }
 
     login(model: LoginModel) {
         return this.http.post(
             loginUrl,
-            JSON.stringify(model), {
-                headers: this.createAuthHeaders('Basic')
-            });
+            JSON.stringify(model));
     }
 
     logout() {
         return this.http.post(
             logoutUrl,
-            {},
-            {
-                headers: this.createAuthHeaders('Kinvey')
-            });
+            {});
     }
 
     checkIfLogged() {
@@ -68,4 +63,6 @@ export class AuthService {
     }
 
     constructor(private http: HttpClient) { }
+
+    
 }

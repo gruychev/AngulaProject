@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http"
+import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http"
+
 
 
 import { AppComponent } from './app.component';
@@ -12,14 +13,15 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app.routing';
 import { from } from 'rxjs';
 import { AuthService } from './authentication/auth.service';
-import { PostCreateComponent } from './post/post-create/post-create.component';
+
 import { PostService } from './post.service';
-import { PostListComponent } from './post/post-list/post-list.component';
-import { PostInfoComponent } from './post/post-info/post-info.component';
+
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PostReseravationComponent } from './post/post-reseravation/post-reseravation.component';
+
+import { TokenInterceptor } from './interceptor/token.interceptor';
+import { PostModule } from './post/post.module';
 
 @NgModule({
   declarations: [
@@ -28,10 +30,7 @@ import { PostReseravationComponent } from './post/post-reseravation/post-reserav
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    PostCreateComponent,
-    PostListComponent,
-    PostInfoComponent,
-    PostReseravationComponent
+ 
   ],
   imports: [
     BrowserModule,
@@ -40,9 +39,16 @@ import { PostReseravationComponent } from './post/post-reseravation/post-reserav
     HttpClientModule,
     CommonModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    PostModule
   ],
-  providers: [AuthService,PostService],
+  providers: [AuthService,PostService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi:true
+
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
