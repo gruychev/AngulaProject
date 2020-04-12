@@ -8,8 +8,7 @@ import { AuthService } from '../core/services/auth.service';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css']
 })
-export class NavigationComponent implements OnInit {
-  
+export class NavigationComponent implements OnInit { 
 
   constructor(public authService: AuthService, private router: Router) { }
 

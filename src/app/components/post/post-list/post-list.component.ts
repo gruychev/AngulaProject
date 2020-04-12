@@ -19,8 +19,6 @@ export class PostListComponent implements OnInit {
 
   allPosts$: Observable<PostInfo[]>;
 
-
-
   constructor(
     private postService: PostService,
     private route: ActivatedRoute,
@@ -39,8 +37,11 @@ export class PostListComponent implements OnInit {
      
 
   fromChild(event){ 
-      const body =event  
-      body['author'] = localStorage.getItem('username');        
+      const body ={}  
+      body['author'] = localStorage.getItem('username'); 
+      body['hotelname']=event['hotelname']
+      body['url']=event['url']  
+      body['hotelprice']=event['hotelprice']        
       this.postService.createReservation(body)
         .subscribe(() => {         
           this.toastr.success('Book successfully', 'Success!');  

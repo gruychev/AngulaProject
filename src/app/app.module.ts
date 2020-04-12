@@ -21,6 +21,8 @@ import { RegisterComponent } from './components/authentication/register/register
 import { PostModule } from './components/post/post.module';
 import { AuthService } from './core/services/auth.service';
 import { PostService } from './core/services/post.service';
+import { AuthGuard } from './core/guard/auth.guard';
+import { TokenInterceptor } from './core/interceptors/interceptor';
 
 
 
@@ -43,7 +45,13 @@ import { PostService } from './core/services/post.service';
     ToastrModule.forRoot(),
     PostModule
   ],
-  providers: [AuthService,PostService,
+  providers: [AuthService,PostService,,
+    AuthGuard,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptor,
+      multi:true
+    }
     ],
   bootstrap: [AppComponent]
 })

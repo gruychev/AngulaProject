@@ -19,49 +19,32 @@ export class AuthService {
     }
     private currentAuthtoken: string;
 
-    private createAuthHeaders(type: string) {
-      if (type === 'Basic') {
-           return new HttpHeaders({
-               'Authorization': `Basic ${btoa(`${APP_KEY}:${APP_SECRET}`)}`,
-               'Content-Type': 'application/json'
-           });
-       } else {
-           return new HttpHeaders({
-               'Authorization': `Kinvey ${localStorage.getItem('authtoken')}`,
-                'Content-Type': 'application/json'
-           });
-       }
-    }
+    
 
     register(model: RegisterModel) {
         return this.http.post(
             registerUrl,
             JSON.stringify(model),
-            {
-                headers: this.createAuthHeaders('Basic')
-            });
+           );
     }
 
     login(model: LoginModel) {
         return this.http.post(
             loginUrl,
-            JSON.stringify(model), {
-                headers: this.createAuthHeaders('Basic')
-            });
+            JSON.stringify(model),);
     }
 
     logout() {
         return this.http.post(
             logoutUrl,
-            {},
-            {
-                headers: this.createAuthHeaders('Kinvey')
-            });
+            {},)
+           
     }
 
 
     checkIfLogged() {
-        return this.currentAuthtoken === localStorage.getItem('authtoken');
+       
+         return  localStorage.getItem('authtoken') !==null;
     }
 
     get authtoken() {

@@ -27,26 +27,16 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authService.login(this.model)    
-      .subscribe(data => {
-        this.successfulLogin(data);       
-        this.toastr.success('Logged in successfully', 'Success!');
-        this.router.navigate(['/list']);
+      .subscribe(data => console.dir(data),          
         
-      },
+        
+        
+      
         err => {
           this.loginFailed = true;
           this.errMessage = err['error']['description'];
         })
   }
-
- successfulLogin(data) {
-   this.authService.authtoken = data['_kmd']['authtoken'];
-    localStorage.setItem('authtoken', data['_kmd']['authtoken']);
-   localStorage.setItem('username', data['username']);
-  
-  }
-
-
  
 
   ngOnInit() {
