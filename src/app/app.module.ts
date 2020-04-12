@@ -7,21 +7,22 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http"
 
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { LoginComponent } from './authentication/login/login.component';
-import { RegisterComponent } from './authentication/register/register.component';
-import { HomeComponent } from './home/home.component';
+
+import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app.routing';
 import { from } from 'rxjs';
-import { AuthService } from './authentication/auth.service';
 
-import { PostService } from './post.service';
 
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './components/authentication/login/login.component';
+import { RegisterComponent } from './components/authentication/register/register.component';
+import { PostModule } from './components/post/post.module';
+import { AuthService } from './core/services/auth.service';
+import { PostService } from './core/services/post.service';
 
-import { TokenInterceptor } from './interceptor/token.interceptor';
-import { PostModule } from './post/post.module';
+
 
 @NgModule({
   declarations: [
@@ -43,12 +44,7 @@ import { PostModule } from './post/post.module';
     PostModule
   ],
   providers: [AuthService,PostService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi:true
-
-  }],
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

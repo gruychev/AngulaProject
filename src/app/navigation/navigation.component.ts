@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../authentication/auth.service';
+
 import { Router } from '@angular/router';
+import { AuthService } from '../core/services/auth.service';
 
 @Component({
   selector: 'app-navigation',
@@ -20,7 +21,7 @@ export class NavigationComponent implements OnInit {
       .subscribe(data => {
         localStorage.clear();
         this.authService.authtoken = '';
-       this.router.navigate(['/login']);
+       this.router.navigate(['/home']);
       })
   }
 

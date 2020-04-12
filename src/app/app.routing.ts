@@ -1,20 +1,22 @@
 import{NgModule} from "@angular/core"
 import {RouterModule, Routes} from "@angular/router"
-import { LoginComponent } from './authentication/login/login.component'
-import { RegisterComponent } from './authentication/register/register.component'
-import { HomeComponent } from './home/home.component'
-import { PostCreateComponent } from './post/post-create/post-create.component'
-import { PostListComponent } from './post/post-list/post-list.component'
-import { PostReseravationComponent } from './post/post-reseravation/post-reseravation.component'
+
+import { AuthGuard } from './core/guard/auth.guard'
+import { HomeComponent } from './components/home/home.component'
+import { PostListComponent } from './components/post/post-list/post-list.component'
+import { LoginComponent } from './components/authentication/login/login.component'
+import { RegisterComponent } from './components/authentication/register/register.component'
+import { PostCreateComponent } from './components/post/post-create/post-create.component'
+import { PostReseravationComponent } from './components/post/post-reseravation/post-reseravation.component'
 
 const routes: Routes=[
-    {path: '', pathMatch: 'full', redirectTo: 'list'},
-    {path: 'list', component: PostListComponent},
-  //  {path: 'home', component: HomeComponent},
+    {path: '', pathMatch: 'full', redirectTo: 'home'},    
+    {path: 'home', component: HomeComponent},
+    {path: 'list', component: PostListComponent,canActivate: [AuthGuard]},
     {path: 'login', component:LoginComponent},
     {path: 'register', component: RegisterComponent},
-    {path: 'create', component: PostCreateComponent},
-    {path: 'reservation', component: PostReseravationComponent}
+    {path: 'create', component: PostCreateComponent,canActivate: [AuthGuard]},
+    {path: 'reservation', component: PostReseravationComponent,canActivate: [AuthGuard]}
  
 ]
 
