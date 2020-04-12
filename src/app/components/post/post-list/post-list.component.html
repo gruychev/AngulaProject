@@ -1,0 +1,18 @@
+
+<section id="viewCatalog">
+    
+    <div class="row">
+     
+        <div class="col-lg-2"  *ngFor="let post of (allPosts$ | async); let i=index;" >
+        
+     <app-post-info 
+      
+     [post]="post"    
+     [rank]="i"
+     (clickListEmiter) = "fromChild($event)" >
+    </app-post-info>
+</div>     
+  
+</div>
+
+   </section>

@@ -1,0 +1,29 @@
+<section id="viewCatalog">
+    <ng-template [ngIf]="allPosts">
+    <div class="row">
+     
+<div class="col-lg-2"  *ngFor="let post of allPosts; let i=index;" > 
+     <app-post-book 
+      
+     [post]="post"    
+     [rank]="i"
+     (clickButtonEmiter) = "fromChild($event)">
+    </app-post-book>
+</div>
+       
+  
+    </div>
+
+    <div class = "row" *ngIf = "message">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4"></div>
+        <h1>{{message}}</h1>
+        <div class="col-lg-4"></div>
+    </div>
+  </ng-template>
+</section>
+
+
+    
+
+
