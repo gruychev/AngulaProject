@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
-import { PostInfo } from '../Post-info';
+import { PostInfo } from '../../shared/models/Post-info';
 import { ToastrService } from 'ngx-toastr';
 import { PostService } from 'src/app/core/services/post.service';
 

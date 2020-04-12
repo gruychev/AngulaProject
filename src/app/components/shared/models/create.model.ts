@@ -3,6 +3,7 @@ export class CreateModel {
         public hotelname: string,
         public url: string,
         public hotelprice: string,
+       
         
     ) { }
 }

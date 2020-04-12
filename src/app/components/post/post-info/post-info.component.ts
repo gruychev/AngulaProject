@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 
-import { PostInfo } from '../Post-info';
+
 import { CreateModel } from 'src/app/components/shared/models/create.model';
+import { PostInfo } from '../../shared/models/post-info';
 
 
 @Component({
@@ -12,12 +13,12 @@ import { CreateModel } from 'src/app/components/shared/models/create.model';
 })
 export class PostInfoComponent implements OnInit {
 
-  @Input()post: PostInfo;
+  @Input() post: PostInfo;
   @Input() rank: number;
 
   @Output()
 
-  clickListEmiter  = new EventEmitter<Object>();
+  clickListEmiter  = new EventEmitter();
 
   model:CreateModel
 

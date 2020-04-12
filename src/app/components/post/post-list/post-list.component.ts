@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
-import { PostInfo } from '../Post-info';
+import { PostInfo } from '../../shared/models/Post-info';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { PostService } from 'src/app/core/services/post.service';
+import { CreateModel } from '../../shared/models/create.model';
 
 @Component({
   selector: 'app-post-list',
@@ -13,6 +14,7 @@ import { PostService } from 'src/app/core/services/post.service';
 })
 export class PostListComponent implements OnInit {
 
+  model: CreateModel;
   post: PostInfo;
 
   allPosts$: Observable<PostInfo[]>;
@@ -34,19 +36,17 @@ export class PostListComponent implements OnInit {
      
          })
      }
+     
 
-  fromChild(event){   
-      
-      const body = event  
-      body['author'] = localStorage.getItem('username');
+  fromChild(event){ 
+      const body =event  
+      body['author'] = localStorage.getItem('username');        
       this.postService.createReservation(body)
-        .subscribe(() => {
-          this.toastr.success('Book successfully', 'Success!');
-          console.log(event)
-          
-      
-        })   
-  
+        .subscribe(() => {         
+          this.toastr.success('Book successfully', 'Success!');  
+                
+        })  
+         
     
   }
 

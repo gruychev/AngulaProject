@@ -9,7 +9,7 @@ import { APP_KEY, APP_SECRET } from './kinvey.tokens';
 
 const registerUrl = `https://baas.kinvey.com/user/${APP_KEY}`;
 const loginUrl = `https://baas.kinvey.com/user/${APP_KEY}/login`;
-const logoutUrl = `https://baas.kinvey.com/user/${APP_SECRET}/_logout`;
+const logoutUrl = `https://baas.kinvey.com/user/${APP_KEY}/_logout`;
 
 
 @Injectable()

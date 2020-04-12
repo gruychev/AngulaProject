@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 //import { BookModel } from 'src/app/components/shared/models/book.model';
-import { PostInfo } from '../Post-info';
+import { PostInfo } from '../../shared/models/Post-info';
 
 @Component({
   selector: 'app-post-book',
