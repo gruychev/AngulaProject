@@ -41,7 +41,7 @@ export class PostReseravationComponent implements OnInit {
 
       this.postService.deletePost(event._id)
         .subscribe(() => {
-          this.postService.getReservation()
+          this.postService.getUserPosts()
             .subscribe((data) => {
               this.allPosts = data;
             });

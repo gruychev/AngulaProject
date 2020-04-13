@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   registerFailed: boolean;
   errMessage: string;
 
-  //@ViewChild('form') registrationForm: NgForm;
+
 
   constructor(private authService: AuthService,
     private router: Router) {
@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
 
   register(){
     delete this.model['confirmPassword'];
-    //this.registrationForm.reset()
+    
     this.authService.register(this.model)
       .subscribe(data => {
         this.router.navigate(['/login']);

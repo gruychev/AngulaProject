@@ -14,11 +14,12 @@ import { APP_KEY, APP_SECRET } from '../services/kinvey.tokens';
 import {tap} from 'rxjs/operators'
 import { AuthService } from '../services/auth.service';
 import{ Router} from '@angular/router'
+import { ToastrService } from 'ngx-toastr';
 
 
 @Injectable()
   export class TokenInterceptor implements HttpInterceptor{
-      constructor(private authService : AuthService,
+      constructor(private authService : AuthService,private toastr: ToastrService,
         private router : Router){}    
 
     intercept(req: HttpRequest<any>, next: HttpHandler):
@@ -76,6 +77,7 @@ import{ Router} from '@angular/router'
         this.authService.authtoken = data['_kmd']['authtoken'];
          localStorage.setItem('authtoken', data['_kmd']['authtoken']);
         localStorage.setItem('username', data['username']);
+        this.toastr.success('Logged in successfully', 'Success!');
         this.router.navigate(['/list']);
        
        }
